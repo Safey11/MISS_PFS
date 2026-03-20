@@ -114,7 +114,7 @@ export default function AboutSection() {
 
               {/* Photo */}
               <div className="relative z-10 w-full aspect-[4/5] bg-gradient-to-br from-stone-100 to-amber-50 rounded-sm overflow-hidden shadow-[0_8px_48px_rgba(30,20,10,0.10)]">
-                {/* Replace with real image: <Image src="/teacher.jpg" alt="Mr. Rahil Ahmed" fill className="object-cover" /> */}
+                {/* Replace with real image: <Image src="/teacher.jpg" alt="Ms. Ayesha khan" fill className="object-cover" /> */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-30">
                   <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
                     <circle cx="32" cy="22" r="14" stroke="#92400e" strokeWidth="1.5" />
@@ -136,7 +136,7 @@ export default function AboutSection() {
                 </p>
                 <div className="mt-3 flex items-center gap-2">
                   <div className="w-6 h-px bg-amber-700" />
-                  <span className="text-[10px] tracking-wide uppercase text-stone-400" style={{ fontFamily: "'DM Sans', sans-serif" }}>Mr. Rahil Ahmed</span>
+                  <span className="text-[10px] tracking-wide uppercase text-stone-400" style={{ fontFamily: "'DM Sans', sans-serif" }}>Miss Ayesha Khan </span>
                 </div>
               </div>
             </div>
@@ -179,7 +179,7 @@ export default function AboutSection() {
             {/* Bio paragraphs */}
             <div className="space-y-5 mb-12">
               <p className="text-[16px] leading-[1.85] text-stone-600" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                I'm <strong className="text-stone-800 font-semibold">Mr. Rahil Ahmed</strong>, a Senior Commerce Teacher with over 15 years
+                I'm <strong className="text-stone-800 font-semibold"> Miss Ayesha Khan</strong>, a Senior Commerce Teacher with over 15 years
                 of experience guiding O & A Level students across Karachi. My journey began
                 with a simple belief — that every student, given the right guidance, can
                 excel in Commerce.
