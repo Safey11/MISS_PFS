@@ -7,8 +7,9 @@ import { usePathname } from "next/navigation";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Experience", href: "/experiance" },
-  { label: "Subjects", href: "/subject" },
+  { label: "Services", href: "/Servicessection" },
+  { label: "Projects", href: "/ProjectsSection" },
+  { label: "Teaching", href: "/experiance" },
   { label: "Resources", href: "/resource" },
   { label: "Contact", href: "/contact" },
 ];
@@ -24,11 +25,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -36,7 +34,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Navbar — z-40 so drawer (z-50) sits ABOVE it ── */}
       <nav
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-in-out
           ${scrolled
@@ -46,13 +43,13 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
 
-          {/* Logo / Name */}
+          {/* Logo */}
           <Link href="/" className="group flex flex-col leading-tight select-none">
             <span
               className="text-[11px] tracking-[0.22em] uppercase font-medium text-amber-700 transition-opacity duration-300 group-hover:opacity-70"
               style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
             >
-              Commerce
+              Writer & Educator
             </span>
             <span
               className="text-[22px] font-semibold tracking-tight text-stone-800 transition-colors duration-300 group-hover:text-amber-800"
@@ -70,16 +67,13 @@ export default function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`relative px-4 py-2 text-[13px] tracking-wide font-medium transition-colors duration-200 rounded-sm group
-                      ${isActive
-                        ? "text-amber-800"
-                        : "text-stone-600 hover:text-stone-900"
-                      }`}
+                    className={`relative px-3.5 py-2 text-[12.5px] tracking-wide font-medium transition-colors duration-200 rounded-sm group
+                      ${isActive ? "text-amber-800" : "text-stone-600 hover:text-stone-900"}`}
                     style={{ fontFamily: "'DM Sans', sans-serif" }}
                   >
                     {link.label}
                     <span
-                      className={`absolute bottom-0 left-4 right-4 h-px bg-amber-700 transition-transform duration-300 origin-left
+                      className={`absolute bottom-0 left-3.5 right-3.5 h-px bg-amber-700 transition-transform duration-300 origin-left
                         ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
                     />
                   </Link>
@@ -88,21 +82,21 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* CTA Button — Desktop */}
+          {/* CTA — Desktop */}
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-[12.5px] tracking-widest uppercase font-semibold border border-amber-800 text-amber-800 rounded-sm hover:bg-amber-800 hover:text-white transition-all duration-300"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-[12px] tracking-widest uppercase font-semibold border border-amber-800 text-amber-800 rounded-sm hover:bg-amber-800 hover:text-white transition-all duration-300"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Get in Touch
+              Hire Me
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
           </div>
 
-          {/* Hamburger — Mobile */}
+          {/* Hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
@@ -115,40 +109,22 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* ── Mobile Drawer — z-50 covers everything including navbar ── */}
-      <div
-        className={`fixed inset-0 z-50 md:hidden transition-all duration-500
-          ${menuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
-      >
-        {/* Backdrop */}
+      {/* Mobile Drawer */}
+      <div className={`fixed inset-0 z-50 md:hidden transition-all duration-500 ${menuOpen ? "pointer-events-auto" : "pointer-events-none"}`}>
         <div
           onClick={() => setMenuOpen(false)}
-          className={`absolute inset-0 bg-stone-900/50 backdrop-blur-sm transition-opacity duration-300
-            ${menuOpen ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 bg-stone-900/50 backdrop-blur-sm transition-opacity duration-300 ${menuOpen ? "opacity-100" : "opacity-0"}`}
         />
+        <div className={`absolute top-0 right-0 h-full w-72 bg-white shadow-2xl flex flex-col transition-transform duration-500 ease-in-out ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
 
-        {/* Slide-in panel — starts from very top, fully covers navbar */}
-        <div
-          className={`absolute top-0 right-0 h-full w-72 bg-white shadow-2xl flex flex-col transition-transform duration-500 ease-in-out
-            ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
-        >
-          {/* Panel header with logo + close button */}
           <div className="flex items-center justify-between px-6 py-5 border-b border-stone-100">
-            <Link
-              href="/"
-              onClick={() => setMenuOpen(false)}
-              className="flex flex-col leading-tight"
-            >
-              <span
-                className="text-[10px] tracking-[0.22em] uppercase font-medium text-amber-700"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-              >
-                Commerce
+            <Link href="/" onClick={() => setMenuOpen(false)} className="flex flex-col leading-tight">
+              <span className="text-[10px] tracking-[0.22em] uppercase font-medium text-amber-700"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Writer & Educator
               </span>
-              <span
-                className="text-[17px] font-semibold text-stone-800 tracking-tight"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-              >
+              <span className="text-[17px] font-semibold text-stone-800 tracking-tight"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                 Miss Ayesha Khan
               </span>
             </Link>
@@ -163,8 +139,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Nav links */}
-          <ul className="flex flex-col px-4 py-6 gap-1 flex-1">
+          <ul className="flex flex-col px-4 py-6 gap-1 flex-1 overflow-y-auto">
             {navLinks.map((link, i) => {
               const isActive = pathname === link.href;
               return (
@@ -176,10 +151,7 @@ export default function Navbar() {
                         ? "bg-amber-50 text-amber-800 border-l-2 border-amber-700"
                         : "text-stone-600 hover:bg-stone-50 hover:text-stone-900"
                       }`}
-                    style={{
-                      fontFamily: "'DM Sans', sans-serif",
-                      transitionDelay: menuOpen ? `${i * 40}ms` : "0ms",
-                    }}
+                    style={{ fontFamily: "'DM Sans', sans-serif", transitionDelay: menuOpen ? `${i * 40}ms` : "0ms" }}
                   >
                     {link.label}
                     {isActive && (
@@ -193,20 +165,17 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* Mobile CTA */}
           <div className="px-6 pb-8">
             <Link
               href="/contact"
               className="flex items-center justify-center gap-2 w-full py-3 text-[12px] tracking-widest uppercase font-semibold bg-amber-800 text-white rounded-sm hover:bg-amber-900 transition-colors duration-200"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Get in Touch
+              Hire Me
             </Link>
-            <p
-              className="text-center text-[11px] text-stone-400 mt-4 tracking-wide"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
-            >
-              Commerce Teacher · Educator
+            <p className="text-center text-[11px] text-stone-400 mt-4 tracking-wide"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Content Writer · Commerce Educator
             </p>
           </div>
         </div>
