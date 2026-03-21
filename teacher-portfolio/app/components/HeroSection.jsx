@@ -176,7 +176,7 @@ export default function HeroSection() {
                 </svg>
               </Link>
               <Link
-                href="/subjects"
+                href="/subject"
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 border border-stone-300 text-stone-700 text-[13px] tracking-widest uppercase font-semibold rounded-sm hover:border-amber-700 hover:text-amber-800 active:scale-[0.98] transition-all duration-200"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
